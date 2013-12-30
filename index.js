@@ -7,7 +7,7 @@ var Q = require('Q')
   , fs = require('q-io/fs')
   ;
 
-var W = 'prisco';
+var W = 'prisco - a?DFadf ìììì'.remove(/[^a-z]/ig).toLowerCase().split('');
 
 Q.longStackSupport = true;
 Q.spawn(function *() {
@@ -19,7 +19,7 @@ Q.spawn(function *() {
   
   contents = contents.toLowerCase();
   
-  enc = W.split('').map(function (c) {
+  enc = W.map(function (c) {
     var found = false
       , found_index = -1
       , par_index = 0
