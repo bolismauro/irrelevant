@@ -3,22 +3,13 @@
 'use strict';
 
 require('sugar');
-var Q = require('Q')
-  , fs = require('q-io/fs')
-  ;
 
-var W = 'prisco - a?DFadf ìììì'.remove(/[^a-z]/ig).toLowerCase().split('');
-
-Q.longStackSupport = true;
-Q.spawn(function *() {
-  var contents = yield fs.read('book/book.txt')
-    , pars = contents.split(/\n\n/g)
-    , avgwords = pars.map(function (p) { return p.split(/\s+/g).length; }).average()
+module.exports.encode = function _encode(message_, book) {
+  var pars = book.toLowerCase().split(/\n\n/g)
+    , W = message_.remove(/[^a-z]/ig).toLowerCase().split('')
     , enc = []
     ;
-  
-  contents = contents.toLowerCase();
-  
+    
   enc = W.map(function (c) {
     var found = false
       , found_index = -1
@@ -46,12 +37,12 @@ Q.spawn(function *() {
     }
   });
   
-  enc = enc.map(function (row) { return row.join(','); }).join(',');
   
-  console.log('-> book has ' + pars.length + ' paragraphs with an average of ' + avgwords + ' words each.');
-  console.log('-> first paragraph begins with ' + pars[0].trim().substr(0, 20) + '...');
-  console.log('-> encoding word', W);
-  console.log('-> encoded word', enc);
-});
-
-
+  // console.log('-> book has ' + pars.length + ' paragraphs.');
+  // console.log('-> first paragraph begins with ' + pars[0].trim().substr(0, 20) + '...');
+  // console.log('-> encoding word', W);
+  // console.log('-> encoded word', enc);
+  
+  enc = enc.map(function (row) { return row.join(' '); }).join(' ');
+  return enc;
+}
