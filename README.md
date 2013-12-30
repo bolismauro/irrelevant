@@ -3,7 +3,6 @@ irrelevant
 
 Encrypt strings with books.
 
-
 ## What?
 
 Like the *Person of Interest*'s machine does, but for folks without an in-house personal library.
@@ -12,6 +11,13 @@ Any lowercase-ASCII string can be converted to a numbers sequence, such as:
 `4 4 1 5 3 3 4 4 5 5 2 6 2 1 1 6 1 2`.
 
 Assuming that the recipient has the knowledge of which book (text) has been used, he can decode the message: the first character of the messages is the `1`st character of the `4`th word of the `4`th paragraph, and so on.
+
+There's no guarantee that multiple calls will provide the same encrypted message (and they won't).
+
+
+## Installation
+
+`npm install irrelevant`
 
 
 ## Usage

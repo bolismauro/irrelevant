@@ -4,7 +4,7 @@
 
 require('sugar');
 
-module.exports.encode = function _encode(message_, book) {
+module.exports.encode = function _encode(message_, book, return_array) {
   var pars = book.toLowerCase().split(/\n\n/g)
     , W = message_.remove(/[^a-z]/ig).toLowerCase().split('')
     , enc = []
@@ -43,6 +43,11 @@ module.exports.encode = function _encode(message_, book) {
   // console.log('-> encoding word', W);
   // console.log('-> encoded word', enc);
   
-  enc = enc.map(function (row) { return row.join(' '); }).join(' ');
-  return enc;
+  if (return_array) {
+    return enc;
+    
+  } else {
+    enc = enc.map(function (row) { return row.join(' '); }).join(' ');
+    return enc;
+  }
 }
