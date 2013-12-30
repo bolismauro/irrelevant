@@ -1,0 +1,24 @@
+{
+  "name": "irrelevant",
+  "version": "0.0.0",
+  "description": "irrelevant ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lusentis/irrelevant.git"
+  },
+  "author": "Simone Lusenti <simone@plasticpanda.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lusentis/irrelevant/issues"
+  },
+  "homepage": "https://github.com/lusentis/irrelevant",
+  "dependencies": {
+    "q": "~0.9.7",
+    "q-io": "~1.10.6",
+    "sugar": "~1.4.1"
+  }
+}
