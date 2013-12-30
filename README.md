@@ -1,7 +1,7 @@
-irrelevant
+irrelevant [![NPM version](https://badge.fury.io/js/irrelevant.png)](http://badge.fury.io/js/irrelevant)  
 ==========
 
-Encrypt strings with books.
+Encrypts strings with books.
 
 ## What?
 
@@ -17,7 +17,7 @@ There's no guarantee that multiple calls will provide the same encrypted message
 
 ## Installation
 
-`npm install irrelevant`
+[![NPM](https://nodei.co/npm/irrelevant.png?compact=true)](https://nodei.co/npm/irrelevant/)
 
 
 ## Usage
