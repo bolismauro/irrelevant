@@ -23,14 +23,12 @@ Q.spawn(function *() {
     var found = false
       , found_index = -1
       , par_index = 0
-      , par_start_index = 0
       , word_index = -1
       ;
     
     while (!found) {
       word_index = -1;
       par_index = Number.random(0, pars.length - 1);
-      par_start_index = Number.random(0, pars[par_index].length - 1);
       
       pars[par_index].words(function (word, word_index_) {
         if (word_index !== -1) { return; }
