@@ -4,6 +4,14 @@
 
 require('sugar');
 
+var _chunckArray = function _chunkArray(array, chunkSize) {
+  return [].concat.apply([],
+    array.map(function(elem,i) {
+      return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
+    })
+  );
+}
+
 module.exports.encode = function _encode(message_, book, return_array) {
   var pars = book.toLowerCase().split(/\n\n/g)
     , W = message_.remove(/[^a-z]/ig).toLowerCase().split('')
@@ -50,4 +58,33 @@ module.exports.encode = function _encode(message_, book, return_array) {
     enc = enc.map(function (row) { return row.join(' '); }).join(' ');
     return enc;
   }
+}
+
+
+module.exports.decode = function _decode(cipher, book) {
+  var pars = book.toLowerCase().split(/\n\n/g)
+    , W = _chunckArray(cipher.replace(/\s+/g, '').split(''), 3)
+    , message
+    ;
+
+  
+  message = W.map(function (c) {
+    var par
+      , word
+      ;
+
+    try {
+    
+      par =  pars[c[0]-2];
+      word  = par.words()[c[1]-1];      
+      return word.charAt(c[2]-1);
+    
+    } catch (e) {
+      // console.log('Error while decrypting', c)
+      return '';
+    }
+
+  }).join('');
+
+  return message;
 }

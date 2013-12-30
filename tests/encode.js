@@ -8,5 +8,8 @@ var irrelevant = require('../')
 
 var book = fs.readFileSync('book.txt', { encoding: 'utf8' });
 
-console.log('As string:', irrelevant.encode('Prisco', book));
+var cipher = irrelevant.encode('Prisco', book);
+console.log('As string:', cipher);
+console.log('Decrypted:', irrelevant.decode(cipher, book));
+
 console.log('As array:', irrelevant.encode('Prisco', book, true));
