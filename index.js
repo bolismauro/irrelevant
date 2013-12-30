@@ -4,7 +4,7 @@
 
 require('sugar');
 
-var _chunckArray = function _chunkArray(array, chunkSize) {
+var _chunkArray = function _chunkArray(array, chunkSize) {
   return [].concat.apply([],
     array.map(function(elem,i) {
       return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
@@ -63,7 +63,7 @@ module.exports.encode = function _encode(message_, book, return_array) {
 
 module.exports.decode = function _decode(cipher, book) {
   var pars = book.toLowerCase().split(/\n\n/g)
-    , W = _chunckArray(cipher.replace(/\s+/g, '').split(''), 3)
+    , W = _chunkArray(cipher.replace(/\s+/g, '').split(''), 3)
     , message
     ;
 
@@ -75,13 +75,13 @@ module.exports.decode = function _decode(cipher, book) {
 
     try {
     
-      par =  pars[c[0]-2];
+      par =  pars[c[0]-1];
       word  = par.words()[c[1]-1];      
       return word.charAt(c[2]-1);
     
     } catch (e) {
       // console.log('Error while decrypting', c)
-      return '';
+      return '?';
     }
 
   }).join('');
